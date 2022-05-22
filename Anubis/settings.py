@@ -30,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
+AUTH_USER_MODEL = 'Person.systemUser'
+SILENCED_SYSTEM_CHECKS = ['auth.E003']
+AUTH_GROUP_MODEL = 'Security.permissionGroup'
 
 # Application definition
 
@@ -41,7 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'Basic',
+    'Person',
+    'Security',
+
     'templatetags',
+
+    'localflavor',
 ]
 
 MIDDLEWARE = [
@@ -159,8 +168,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-ADMIN_SITE_HEADER = "Anúbis"
-SITE_TITLE = "Anúbis"
+ADMIN_SITE_HEADER = "Anúbis - v0.0.1"
+SITE_TITLE = "Anúbis - v0.0.1"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
