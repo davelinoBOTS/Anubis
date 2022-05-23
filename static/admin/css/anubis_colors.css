@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+:root {
+    --black: #000000;
+    --bg-input-primary: #e5e5e5;
+    --bd-input-primary-focus: #ffffff;
+}
+
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group .input {
+    background: var(--bg-input-primary);
+    border-color: var(--black);
+}
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group .input:focus-visible {
+    border-color: var(--bd-input-primary-focus);
+}

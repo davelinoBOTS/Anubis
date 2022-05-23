@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Anúbis 0.0.1-1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 15:25-0300\n"
+"POT-Creation-Date: 2022-05-22 21:12-0300\n"
 "PO-Revision-Date: 2022-05-22 15:02-0300\n"
 "Last-Translator: David Avelino <david.avelino@botsconsultoria.com.br>\n"
 "Language-Team: \n"
@@ -63,8 +63,6 @@ msgid "Fieldset Access"
 msgstr "Acessos"
 
 #: .\Person\admin.py:59
-#, fuzzy
-#| msgid "Verbose Permission Group"
 msgid "Fieldset Permissions"
 msgstr "Permissões"
 
@@ -120,7 +118,8 @@ msgstr "Pessoas física"
 msgid "Verbose Code"
 msgstr "Código"
 
-#: .\Person\models.py:92
+#: .\Person\models.py:92 .\templates\admin\login.html:47
+#: .\templates\admin\login.html:49 .\templates\admin\login.html:50
 msgid "Verbose Username"
 msgstr "Nome do usuário"
 
@@ -195,6 +194,28 @@ msgstr "Grupo de permissões"
 #: .\Security\models.py:20
 msgid "Verbose Permission Group Plural"
 msgstr "Grupos de permissões"
+
+#: .\templates\admin\base.html:15
+msgid "Django administration"
+msgstr ""
+
+#: .\templates\admin\base_site.html:7
+msgid "Django site admin"
+msgstr ""
+
+#: .\templates\admin\login.html:24 .\templates\admin\login.html:61
+#: .\templates\admin\login.html:62
+msgid "Sign In"
+msgstr "Acessar"
+
+#: .\templates\admin\login.html:25
+msgid "Welcome to the Anubis system"
+msgstr "Bem-vindo ao sistema Anúbis"
+
+#: .\templates\admin\login.html:54 .\templates\admin\login.html:56
+#: .\templates\admin\login.html:57
+msgid "Verbose Password"
+msgstr "Senha"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
 msgid "Messages"

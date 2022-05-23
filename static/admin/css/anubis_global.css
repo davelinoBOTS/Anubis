@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+:root {
+    
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+.info-box .info-box-icon {
+    width: 35px;
+}
+#body-admin-base.login #content-wrapper-admin-base,
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper {
+    margin: 0;
+}
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content {
+    padding: 7rem 0;
+}
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents {
+    width: 100%;
+}
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group {
+    margin-bottom: 15px;
+}
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group .label,
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group .input {
+    width: 100%;
+    display: block;
+}
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group .label {
+    margin-bottom: 0;
+}
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group .input {
+    border: 2px solid;
+    padding: 5px;
+    border-radius: 5px;
+}
+#body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group label i {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 1201px) {
+
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+
+}
+@media (min-width: 481px) and (max-width: 768px) {
+
+}
+@media (max-width: 480px) {
+
+}

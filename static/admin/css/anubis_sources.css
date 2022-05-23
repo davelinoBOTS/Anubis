@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+:root {
+    --font-family-primary: 'Roboto', sans-serif;
+    --font-family-secondary: 'Open Sans', sans-serif;
+    --font-size-primary: 1em;
+    --font-size-info: .8em;
+}
+
+@media (min-width: 1201px) {
+    body {
+        font-size: 5px;
+    }
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+    body {
+        font-size: 15px;
+    }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        font-size: 15px;
+    }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+    body {
+        font-size: 25px;
+    }
+}
+@media (max-width: 480px) {
+    body {
+        font-size: 25px;
+    }
+}
+html, body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-primary);
+}
+.info-box {
+    font-size: var(--font-size-info);
+}
