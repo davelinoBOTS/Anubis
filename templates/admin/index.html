@@ -10,14 +10,10 @@
 {% block breadcrumbs %}{% endblock %}
 {% block nav-sidebar %}{% endblock %}
 
-{% block header %} {% include "admin/header.html" %} {% endblock %}
-
 {% block content %}
     <div id="content-main">
         {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
     </div>
 {% endblock %}
-
-{% block footer %} {% include "admin/footer.html" %} {% endblock %}
 
 {% block sidebar %}{% endblock %}

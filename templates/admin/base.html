@@ -70,6 +70,198 @@
 			<div id="main-admin-base" class="main">
 				<div id="content-wrapper-admin-base" class="content-wrapper">
 
+					<div class="preloader flex-column justify-content-center align-items-center">
+						<img alt="Anúbis" class="animation__wobble" height="60"
+							 src="{% static 'public/imgs/pngs/anubis.png' %}" width="60">
+					</div>
+
+					{% block usertools %}
+					<!-- Navbar: Start -->
+					<nav class="main-header navbar navbar-expand navbar-dark">
+
+						<!-- Left navbar links: Start -->
+						<ul class="navbar-nav">
+							<li id="pushmenu_in" class="nav-item">
+								<a class="nav-link" data-widget="pushmenu" href="#" role="button">
+									<i class="fa-solid fa-bars"></i>
+								</a>
+							</li>
+						</ul>
+						<!-- Left navbar links: End -->
+
+						{% if user.is_active and user.is_staff %}
+							<!-- Right navbar links: Start -->
+							<ul class="navbar-nav ml-auto"><li class="nav-item dropdown user-menu">
+									<a class="nav-link dropdown-toggle" data-bs-container="body"
+									   data-bs-placement="bottom" data-bs-toggle="dropdown" href="#" role="button">
+										{% if user.physicalPerson.photo %}
+											<img alt="{% if user.first_name %}{{ user.get_short_name }}{% else %}{{ user }}{% endif %}"
+												 class="user-image img-circle elevation-2"
+												 src='{{ pathMedia }}/{{ user.physicalPerson.photo }}'
+												 title="{% if user.first_name %}{{ user.get_short_name }}{% else %}{{ user }}{% endif %}">
+										{% else %}
+											{% if user.physicalPerson.sex == '1' %}
+												<img alt="{% if user.first_name %}{{ user.get_short_name }}{% else %}{{ user }}{% endif %}"
+													 class="user-image img-circle elevation-2"
+													 src='{% static "public/imgs/pngs/avatar5.png" %}'
+													 title="{% if user.first_name %}{{ user.get_short_name }}{% else %}{{ user }}{% endif %}">
+											{% else %}
+												<img alt="{% if user.first_name %}{{ user.get_short_name }}{% else %}{{ user }}{% endif %}"
+													 class="user-image img-circle elevation-2"
+													 src='{% static "public/imgs/pngs/avatar2.png" %}'
+													 title="{% if user.first_name %}{{ user.get_short_name }}{% else %}{{ user }}{% endif %}">
+											{% endif %}
+										{% endif %}
+										<span class="d-none d-md-inline">
+											{% if user.first_name %}
+												{{ user.get_short_name }}
+											{% else %}
+												{{ user }}
+											{% endif %}
+										</span>
+									</a>
+
+									<ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right"
+										style="left: inherit; right: 0px;">
+										<li class="user-header bg-primary">
+											{% if user.physicalPerson.photo %}
+												<img alt="{% if user.first_name %}{{ user.get_full_name }}{% else %}{{ user }}{% endif %}"
+													 class="img-circle elevation-2"
+													 src='{{ pathMedia }}/{{ user.physicalPerson.photo }}'
+													 title="{% if user.first_name %}{{ user.get_full_name }}{% else %}{{ user }}{% endif %}">
+											{% else %}
+												{% if user.physicalPerson.sex == '1' %}
+													<img alt="{% if user.first_name %}{{ user.get_full_name }}{% else %}{{ user }}{% endif %}"
+														 class="img-circle elevation-2"
+														 src='{% static "public/imgs/pngs/avatar5.png" %}'
+														 title="{% if user.first_name %}{{ user.get_full_name }}{% else %}{{ user }}{% endif %}">
+												{% else %}
+													<img alt="{% if user.first_name %}{{ user.get_full_name }}{% else %}{{ user }}{% endif %}"
+														 class="img-circle elevation-2"
+														 src='{% static "public/imgs/pngs/avatar2.png" %}'
+														 title="{% if user.first_name %}{{ user.get_full_name }}{% else %}{{ user }}{% endif %}">
+												{% endif %}
+											{% endif %}
+											<p>
+												{% if user.first_name %}
+													{{ user.get_full_name }}
+												{% else %}
+													{{ user }}
+												{% endif %}
+												<small>
+													{% if user.office %}{{ user.get_office_name }}{% endif %}<br/>
+													{% trans "Member since" %} {{ user.registrationDate|date:"M. Y" }}
+												</small>
+											</p>
+										</li>
+										<li class="user-body">
+											<div class="row">
+												{% if site_url %}
+													<div class="col-4 text-left">
+														<a href="{{ site_url }}">{% translate 'View site' %}</a>
+													</div>
+												{% endif %}
+												{% if user.has_usable_password %}
+													<div class="col-8 text-right">
+														<a href="{% url 'admin:password_change' %}">
+															{% translate 'Change password' %}
+														</a>
+													</div>
+												{% endif %}
+											</div>
+										</li>
+										<li class="user-footer">
+											<div class="float-right">
+												<a class="btn btn-default btn-flat" href="{% url 'admin:logout' %}">
+													{% translate 'Log out' %}
+												</a>
+											</div>
+										</li>
+									</ul>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" data-widget="fullscreen" href="#" role="button">
+										<i class="fa-solid fa-expand-arrows-alt"></i>
+									</a>
+								</li>
+							</ul>
+							<!-- Right navbar links: End -->
+						{% endif %}
+
+					</nav>
+					<!-- Navbar: End -->
+
+					<!-- Main Sidebar Container: Start -->
+					<aside class="main-sidebar sidebar-dark-primary elevation-4">
+						<a href="#" class="brand-link">
+							<img alt="Anúbis" class="brand-image img-circle elevation-3"
+								 src='{% static "public/imgs/pngs/anubis.png" %}'
+								 style="opacity: .8" title="Anúbis">
+							<span class="brand-text font-weight-light">
+								{{ site_header|default:_('Django administration') }}
+							</span>
+						</a>
+
+						<div class="sidebar">
+							<nav class="mt-2">
+								<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+									<li class="nav-item">
+										<a href="/admin" class="nav-link">
+											<i class="nav-icon fa-solid fa-house-laptop"></i>
+											<p>{% trans "Home" %}</p>
+										</a>
+									</li>
+									{% if site_url %}
+									<li class="nav-item">
+										<a href="{{ site_url }}" class="nav-link">
+											<i class="nav-icon fa-solid fa-earth-americas"></i>
+											<p>{% translate "View site" %}</p>
+										</a>
+									</li>
+									{% endif %}
+
+									<hr style="height: 2px;color:#4b545c;margin:5px -10px;"/>
+
+									{% if user.is_active and user.is_staff %}
+										{% bots_get_menu as app_list %}
+										{% for app in app_list %}
+											<li class="nav-item">
+												<a href="#" class="nav-link">
+													<i class="nav-icon {{ app.icon }}"></i>
+													<p>
+														{{ app.label }}
+														<i class="right fa-solid fa-angle-left"></i>
+													</p>
+												</a>
+												<ul class="nav nav-treeview">
+													{% for model in app.items %}
+														{% if model.url %}
+															<li class="nav-item">
+																<a %} %} aria-current="page" class="nav-link" endif
+																   href="{{ model.url }}" if in model.url
+																   request.path|urlencode {% {%>
+																	{% if model.icon %}
+																		<i class="{{ model.icon }} nav-icon"></i>
+																	{% else %}
+																		<i class="far fa-circle nav-icon"></i>
+																	{% endif %}
+																	<p>{{ model.label }}</p>
+																</a>
+															</li>
+														{% endif %}
+													{% endfor %}
+												</ul>
+											</li>
+										{% endfor %}
+									{% endif %}
+								</ul>
+							</nav>
+						</div>
+					</aside>
+					<!-- Main Sidebar Container: End -->
+					{% endblock %}
+
 					<div class="main" id="main">
 						<div class="content-wrapper">
 

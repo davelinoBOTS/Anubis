@@ -43,19 +43,56 @@ html, body {
     margin-right: 10px;
     margin-bottom: 10px;
 }
-
+#body-admin-base #content-wrapper-admin-base nav {
+    margin-left: 0;
+}
+#body-admin-base #content-wrapper-admin-base .content-wrapper,
+#body-admin-base.sidebar-mini.sidebar-collapse #content-wrapper-admin-base .content-wrapper{
+    margin: .5rem !important;
+}
+#body-admin-base.sidebar-mini.sidebar-collapse .main-header {
+    margin-left: 0 !important;
+}
+#body-admin-base #content-wrapper-admin-base #card-main > .card-body {
+    height: calc(100vh - (3.5rem + 90px));
+    min-height: calc(100vh - (3.5rem + 90px));
+    overflow: auto;
+}
+#body-admin-base #content-wrapper-admin-base #card-main .card-body {
+    padding: 10px;
+}
+#body-admin-base #content-wrapper-admin-base #card-main .timeline {
+    margin: 0 0 0 -10px;
+}
+#body-admin-base #content-wrapper-admin-base #card-main .timeline > div,
+#body-admin-base #content-wrapper-admin-base #card-main .timeline > div > .timeline-item {
+    margin-right: 0;
+}
+#body-admin-base #content-wrapper-admin-base nav .nav-sidebar .nav-treeview > .nav-item > .nav-link > .nav-icon {
+    margin-left: 15px;
+}
 @media (min-width: 1201px) {
-
+    .navbar-nav > .user-menu .user-image {
+        margin-top: -6px;
+    }
 }
 @media (min-width: 1025px) and (max-width: 1200px) {
-
+    .navbar-nav > .user-menu .user-image {
+        margin-top: -6px;
+    }
 }
 @media (min-width: 769px) and (max-width: 1024px) {
-
+    .navbar-nav > .user-menu .user-image {
+        margin-top: -6px;
+    }
 }
 @media (min-width: 481px) and (max-width: 768px) {
-
+    .navbar-nav > .user-menu .user-image {
+        margin-top: -6px;
+    }
 }
 @media (max-width: 480px) {
-
+    .navbar-nav > .user-menu .user-image {
+        margin-top: -6px;
+    }
 }

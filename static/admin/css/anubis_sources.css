@@ -3,7 +3,9 @@
 :root {
     --font-family-primary: 'Roboto', sans-serif;
     --font-family-secondary: 'Open Sans', sans-serif;
-    --font-size-primary: 1em;
+    --font-size-primary: .9em;
+    --font-size-card-title: 1.1em;
+    --font-size-card-body: 1em;
     --font-size-info: .8em;
 }
 
@@ -38,4 +40,15 @@ html, body {
 }
 .info-box {
     font-size: var(--font-size-info);
+}
+.card-header,
+.card-footer,
+.card-title {
+    font-size: var(--font-size-card-title)
+
+}
+.card-body,
+.timeline > div > .timeline-item,
+.timeline > div > .timeline-item > .timeline-header {
+    font-size: var(--font-size-card-body)
 }

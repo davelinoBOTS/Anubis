@@ -13,11 +13,11 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -92,7 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Anubis.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -106,7 +105,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -125,7 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -157,7 +154,6 @@ SESSION_COOKIE_AGE = 1800
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_SAVE_EVERY_REQUEST = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
@@ -179,3 +175,15 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+BOTS_MENU_CUSTOM = getattr(settings, 'BOTS_MENU_CUSTOM', None)
+
+# ANUBIS_MENU_CUSTOM = [
+#    {'label': 'Endereçamentos', 'icon': 'fa-solid fa-suitcase', 'items': [
+#        {'name': 'Basic.country', 'icon': 'fa-solid fa-suitcase',                      'label': 'Países'},
+#        {'name': 'Basic.state',                         'label': 'Estados'},
+#        {'name': 'Basic.territory',                     'label': 'Territórios'},
+#        {'name': 'Basic.city',                          'label': 'Cidades'},
+#        {'name': 'Basic.neighborhood',                  'label': 'Bairros'},
+#    ]},
+# ]

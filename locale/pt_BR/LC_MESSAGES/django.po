@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Anúbis 0.0.1-1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-22 21:12-0300\n"
+"POT-Creation-Date: 2022-05-23 12:14-0300\n"
 "PO-Revision-Date: 2022-05-22 15:02-0300\n"
 "Last-Translator: David Avelino <david.avelino@botsconsultoria.com.br>\n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\Anubis\settings.py:134
+#: .\Anubis\settings.py:131
 msgid "Languages: Brazilian Portuguese"
 msgstr "Linguagem: Português do Brasil"
 
@@ -195,8 +195,40 @@ msgstr "Grupo de permissões"
 msgid "Verbose Permission Group Plural"
 msgstr "Grupos de permissões"
 
-#: .\templates\admin\base.html:15
+#: .\templates\admin\app_list.html:31
+msgid "Recent actions"
+msgstr "Recentes"
+
+#: .\templates\admin\app_list.html:31
+msgid "My actions"
+msgstr "Minhas ações"
+
+#: .\templates\admin\app_list.html:43
+msgid "None available"
+msgstr ""
+
+#: .\templates\admin\base.html:15 .\templates\admin\base.html:202
 msgid "Django administration"
+msgstr ""
+
+#: .\templates\admin\base.html:153
+msgid "Member since"
+msgstr ""
+
+#: .\templates\admin\base.html:161 .\templates\admin\base.html:219
+msgid "View site"
+msgstr ""
+
+#: .\templates\admin\base.html:167
+msgid "Change password"
+msgstr ""
+
+#: .\templates\admin\base.html:176
+msgid "Log out"
+msgstr ""
+
+#: .\templates\admin\base.html:212
+msgid "Home"
 msgstr ""
 
 #: .\templates\admin\base_site.html:7
