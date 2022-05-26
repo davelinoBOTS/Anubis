@@ -1,0 +1,151 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_list bots_tags bots_list_tags %}
+
+{% block extrahead %}
+	{{ block.super }}
+	{{ media.js }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-list{% endblock %}
+
+{% block coltype %}{% endblock %}
+
+{% block content %}
+<div id="content-main">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card card-dark" id="table_result_list"
+				 style="height: inherit; width: inherit; transition: all 0.15s ease 0s;">
+
+				<div id="table_result_list_header" class="card-header">
+					<h3 class="card-title">
+						<i class="fa-solid fa-table-list"></i>
+						{{ cl.opts.verbose_name_plural }}
+					</h3>
+					<div class="card-tools">
+						<button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="#" data-source-selector="#table_result_list_values" data-load-on-init="false">
+							<i class="fa-solid fa-sync-alt"></i>
+						</button>
+						<button type="button" class="btn btn-tool" data-card-widget="maximize">
+							<i class="fa-solid fa-expand"></i>
+						</button>
+					</div>
+				</div>
+
+				<div id="table_result_list_values" class="card-body">
+					<div class="row" style="margin:10px 0;">
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-6">
+									{% block search %}
+										{% search_form cl %}
+									{% endblock %}
+								</div>
+								<div class="col-md-6">
+									{% block filters %}
+			        					{% if cl.has_filters %}
+			          						<div id="changelist-filter" class="row">
+			            						{% for spec in cl.filter_specs %}{% bots_admin_list_filter cl spec %}{% endfor %}
+			          						</div>
+			        					{% endif %}
+			      					{% endblock %}
+		      					</div>
+      						</div>
+						</div>
+						<div class="col-md-4 float-right">
+							{% block object-tools-items %}
+            					{% change_list_object_tools %}
+          					{% endblock %}
+						</div>
+					</div>
+					{% if cl.formset and cl.formset.errors %}
+						<div style="width:100%;padding-left:20px;padding-right:20px">
+							<div id="table_result_error" class="info-box bg-gradient-danger">
+								<span class="info-box-icon"><i class="fa-solid fa-bomb"></i></span>
+								<div class="info-box-content">
+									<span class="info-box-text">
+										{% if cl.formset.total_error_count == 1 %}
+											{% translate "Please correct the error below." %}
+										{% else %}
+											{% translate "Please correct the errors below." %}
+										{% endif %}
+									</span>
+									<span class="progress-description">
+										{{ cl.formset.non_form_errors }}
+									</span>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+
+					{% block messages %}
+						{% if messages %}
+							<div style="width:100%;padding-left:20px;padding-right:20px">
+								<div id="table_result_message" class="info-box bg-gradient-success">
+									<span class="info-box-icon"><i class="fa-solid fa-clipboard-check"></i></span>
+									<div class="info-box-content">
+										<span class="info-box-text">
+											Mensagem
+										</span>
+										<span class="progress-description">
+											<ul class="messagelist">
+												{% for message in messages %}
+													<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+														{{ message|capfirst }}
+												</li>
+												{% endfor %}
+											</ul>
+										</span>
+									</div>
+								</div>
+							</div>
+						{% endif %}
+
+					{% endblock %}
+
+	        		<div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
+        				{% block date_hierarchy %}
+							{% if cl.date_hierarchy %}{% date_hierarchy cl %}{% endif %}
+
+        					<form id="changelist-form" method="post"
+						  		{% if cl.formset and cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %}
+								  novalidate>
+								{% csrf_token %}
+
+								{% if cl.formset %}
+									<div>{{ cl.formset.management_form }}</div>
+								{% endif %}
+
+								{% block result_list %}
+									{% result_list cl %}
+								{% endblock %}
+							</form>
+						{% endblock %}
+	        		</div>
+				</div>
+
+				<div id="table_result_list_footer" class="card-footer">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="callout callout-info anubis_callout_info_left" style="height: 70px;">
+								<h5 style="margin-bottom: 0;font-weight: bold;">{{ cl.result_count }}</h5>
+								<p>{% if cl.result_count == 1 %}
+									{{ cl.opts.verbose_name }}
+								{% else %}
+									{{ cl.opts.verbose_name_plural }}
+								{% endif %}</p>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="callout callout-info anubis_callout_info_right" style="height: 70px;">
+							{% block pagination %}{% pagination cl %}{% endblock %}
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

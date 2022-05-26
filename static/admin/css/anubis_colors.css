@@ -1,15 +1,92 @@
 @charset "UTF-8";
 
 :root {
+    --white: #ffffff;
     --black: #000000;
+    --red: #ff0000;
+	--blue: #0466c8;
+    --green: #00bc8c;
+    --color-primary: #ffffff;
+    --color-link-primary: #ffffff;
+    --color-link-secondary: #000000;
+    --color-link-hover-primary: #bcb8b1;
+    --color-link-disabled: #727d71;
+    --color-button-primary: #ffffff;
     --bg-input-primary: #e5e5e5;
     --bd-input-primary-focus: #ffffff;
+    --bg-button-primary: #0466c8;
+    --bg-disabled-primary: #c7ccb9;
+    --bg-active-primary: #0466c8;
+	--br-blue: #0466c8;
+    --br-input-search: #00bc8c;
+    --br-button-primary: #ffffff;
 }
 
+html,
+body {
+    color: var(--color-primary);
+}
+#searchbar.form-control:focus,
+#changelist-filter .custom-select:focus {
+    border-color: var(--br-input-search);
+}
+.dark-mode a:not(.btn),
+.dark-mode a:not(.btn):visited {
+    color: var(--color-link-primary);
+}
+.dark-mode a:not(.btn):hover,
+.dark-mode a:not(.btn):focus {
+    color: var(--color-link-hover-primary);
+}
+.dark-mode .btn-outline-primary {
+    color: var(--color-button-primary);
+    border-color: var(--br-button-primary);
+}
+.dark-mode .btn-outline-primary:hover {
+    background-color: var(--bg-button-primary);
+}
+.table-striped > tbody > tr:nth-of-type(2n+1) > * {
+    color: var(--white);
+}
 #body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group .input {
     background: var(--bg-input-primary);
     border-color: var(--black);
 }
 #body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents #login-form .group .input:focus-visible {
     border-color: var(--bd-input-primary-focus);
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_left {
+	border-left-color: var(--br-blue);
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right {
+	border-right-color: var(--br-blue) !important;
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li:not(.disabled):not(.active) a {
+    background: var(--white);
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li.disabled a {
+    background: var(--bg-disabled-primary) !important;
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li.active a {
+    background: var(--bg-active-primary);
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li:not(.disabled):not(.active) a,
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li:not(.disabled):not(.active) a:visited {
+    color: var(--color-link-secondary);
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li:not(.disabled) a:hover,
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li:not(.disabled) a:focus,
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li:not(.disabled):hover,
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li:not(.disabled):focus {
+    color: var(--color-link-hover-primary) !important;
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li.disabled a,
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li.disabled a:visited {
+    color: var(--color-link-disabled);
+}
+#table_result_list tbody td i.fa-eye {
+    color: var(--green);
+}
+#table_result_list tbody td i.fa-trash {
+    color: var(--red);
 }

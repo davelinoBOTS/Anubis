@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Anúbis 0.0.1-1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-23 12:14-0300\n"
+"POT-Creation-Date: 2022-05-24 18:27-0300\n"
 "PO-Revision-Date: 2022-05-22 15:02-0300\n"
 "Last-Translator: David Avelino <david.avelino@botsconsultoria.com.br>\n"
 "Language-Team: \n"
@@ -34,29 +34,100 @@ msgstr "O superusuário deve ter is_staff=True."
 msgid "Superuser must have is_superuser=True."
 msgstr "O superusuário deve ter is_superuser=True."
 
+#: .\Basic\admin.py:24 .\Basic\admin.py:54 .\Basic\admin.py:84
+#: .\Basic\admin.py:114 .\Basic\admin.py:144 .\Person\admin.py:24
+#: .\Person\admin.py:55 .\Security\admin.py:26
+msgid "Fieldset General"
+msgstr "Geral"
+
 #: .\Basic\apps.py:8
 msgid "M000"
 msgstr "Módulo Básico"
 
-#: .\Basic\models.py:8
+#: .\Basic\models.py:10
 msgid "Verbose ID"
 msgstr "ID"
 
-#: .\Basic\models.py:14
+#: .\Basic\models.py:16
 msgid "Verbose Registration Date"
 msgstr "Data de registro"
 
-#: .\Basic\models.py:19
+#: .\Basic\models.py:21
 msgid "Verbose Update Date"
 msgstr "Data de atualização"
 
-#: .\Basic\models.py:24 .\Person\models.py:122
+#: .\Basic\models.py:26 .\Person\models.py:122
 msgid "Verbose Is Active"
 msgstr "Ativo"
 
-#: .\Person\admin.py:24 .\Person\admin.py:55 .\Security\admin.py:26
-msgid "Fieldset General"
-msgstr "Geral"
+#: .\Basic\models.py:37 .\Basic\models.py:85 .\Basic\models.py:168
+msgid "Verbose Code IBGE"
+msgstr "Código IBGE"
+
+#: .\Basic\models.py:44 .\Basic\models.py:92 .\Basic\models.py:135
+#: .\Basic\models.py:175 .\Basic\models.py:226
+msgid "Verbose Name"
+msgstr "Nome"
+
+#: .\Basic\models.py:51 .\Basic\models.py:98
+msgid "Verbose Acronym"
+msgstr "Sigla"
+
+#: .\Basic\models.py:58
+msgid "Verbose Nationality"
+msgstr "Nacionalidade"
+
+#: .\Basic\models.py:67 .\Basic\models.py:106
+msgid "Verbose Country"
+msgstr "País"
+
+#: .\Basic\models.py:68
+msgid "Verbose Country Plural"
+msgstr "Países"
+
+#: .\Basic\models.py:112 .\Basic\models.py:143 .\Basic\models.py:188
+msgid "Verbose State"
+msgstr "Estado"
+
+#: .\Basic\models.py:113
+msgid "Verbose State Plural"
+msgstr "Estados"
+
+#: .\Basic\models.py:149 .\Basic\models.py:194
+msgid "Verbose Territory"
+msgstr "Território"
+
+#: .\Basic\models.py:150
+msgid "Verbose Territory Plural"
+msgstr "Territórios"
+
+#: .\Basic\models.py:181
+msgid "Verbose Is Capital"
+msgstr "É Capital?"
+
+#: .\Basic\models.py:201 .\Basic\models.py:241
+msgid "Verbose City"
+msgstr "Cidade"
+
+#: .\Basic\models.py:202
+msgid "Verbose City Plural"
+msgstr "Cidades"
+
+#: .\Basic\models.py:214
+msgid "This state already has a registered capital"
+msgstr "Esse estado já possui uma capital registrada"
+
+#: .\Basic\models.py:232
+msgid "Verbose Zone"
+msgstr "Zona"
+
+#: .\Basic\models.py:247
+msgid "Verbose Neighborhood"
+msgstr "Bairro"
+
+#: .\Basic\models.py:248
+msgid "Verbose Neighborhood Plural"
+msgstr "Bairros"
 
 #: .\Person\admin.py:57
 msgid "Fieldset Access"
@@ -233,6 +304,11 @@ msgstr ""
 
 #: .\templates\admin\base_site.html:7
 msgid "Django site admin"
+msgstr ""
+
+#: .\templates\admin\change_list_object_tools.html:9
+#, python-format
+msgid "Add %(name)s"
 msgstr ""
 
 #: .\templates\admin\login.html:24 .\templates\admin\login.html:61

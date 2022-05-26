@@ -1,0 +1,88 @@
+{% load i18n bots_tags bots_list_tags admin_urls %}
+
+{% if result_hidden_fields %}
+	<div class="hiddenfields">{# DIV for HTML validation #}
+		{% for item in result_hidden_fields %}{{ item }}{% endfor %}
+	</div>
+{% endif %}
+
+{% if results %}
+<div class="results">
+	<table aria-describedby="result_list_info"
+           class="table table-sm table-striped table-head-fixed text-nowrap" id="result_list"
+           role="grid">
+        <thead>
+			<tr>
+				{% for header in result_headers %}
+					{% if not forloop.first %}
+						<th scope="col" {{ header.class_attrib }}
+							{% if header.sortable %}
+								class="sorting sorting_asc" tabindex="0" aria-controls="result_list" rowspan="1"
+                                colspan="1" aria-sort="ascending"
+							{% endif %}>
+							<div class="text">
+                                {% if header.sortable %}
+                                    <a href="{{ header.url_primary }}">{{ header.text|capfirst }}</a>
+                                {% else %}
+                                    <span>{{ header.text|capfirst }}</span>
+                                {% endif %}
+                            </div>
+		   					<div class="clear"></div>
+						</th>
+
+					{% else %}
+						<th class="text-center" style="width: 80px;" scope="col"{{ header.class_attrib }}>#</th>
+					{% endif %}
+				{% endfor %}
+			</tr>
+        </thead>
+
+		<tbody>
+			{% for result in results %}
+				{% with index=forloop.counter %}
+					{% if result.form and result.form.non_field_errors %}
+						<tr><td colspan="{{ result|length }}">{{ result.form.non_field_errors }}</td></tr>
+					{% endif %}
+
+					<tr>
+						{% for item in result %}
+							{% if not forloop.first %}
+								{{ item }}
+							{% else %}
+								<td id="field_index" class="text-center">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-4">{{ index }}</div>
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-4">
+                                                <a alt="{% trans 'View' %} / {% trans 'Change' %}"
+												   href="{% bots_get_id_item_list item %}/change/"
+												   title="{% trans 'View' %} / {% trans 'Change' %} / {% trans 'Delete' %}">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </a>
+                                            </div>
+											<div class="col-md-2"></div>
+                                        </div>
+                                    </div>
+                                </td>
+							{% endif %}
+						{% endfor %}
+					</tr>
+				{% endwith %}
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% else %}
+    <div style="width:100%;padding-left:20px;padding-right:20px">
+        <div id="result_no_records" class="info-box bg-gradient-info">
+            <span class="info-box-icon"><i class="fa-solid fa-circle-info"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-text">{% trans "Information" %}</span>
+                <span class="progress-description">
+                    {% trans "No records found." %}
+                </span>
+            </div>
+        </div>
+    </div>
+{% endif %}

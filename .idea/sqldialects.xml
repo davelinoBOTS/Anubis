@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/Basic/migrations/0002_add_world.py" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/Basic/sql/add_list_country.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/Basic/sql/add_list_state_brasil_centro_oeste.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/Basic/sql/add_list_state_brasil_nordeste.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/Basic/sql/add_list_state_brasil_norte.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/Basic/sql/add_list_state_brasil_sudeste.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/Basic/sql/add_list_state_brasil_sul.sql" dialect="GenericSQL" />
+    <file url="PROJECT" dialect="PostgreSQL" />
+  </component>
+  <component name="SqlResolveMappings">
+    <file url="file://$PROJECT_DIR$/Basic/sql/add_list_territory_brasil_nordeste_piaui.sql" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;@negative&quot;:&quot;1&quot;   }  } }}" />
+    <file url="PROJECT" scope="{&quot;node&quot;:{  &quot;@negative&quot;:&quot;1&quot;,  &quot;group&quot;:{   &quot;@kind&quot;:&quot;root&quot;,   &quot;node&quot;:{    &quot;name&quot;:{     &quot;@qname&quot;:&quot;53e145c8-e51f-48db-87aa-d4b3ad85c2ff&quot;    },    &quot;group&quot;:{     &quot;@kind&quot;:&quot;database&quot;,     &quot;node&quot;:{      &quot;name&quot;:{       &quot;@qname&quot;:&quot;Anubis&quot;      },      &quot;group&quot;:{       &quot;@kind&quot;:&quot;schema&quot;,       &quot;node&quot;:{        &quot;name&quot;:{         &quot;@qname&quot;:&quot;public&quot;        }       }      }     }    }   }  } }}" />
+  </component>
+</project>

@@ -6,6 +6,7 @@
     --font-size-primary: .9em;
     --font-size-card-title: 1.1em;
     --font-size-card-body: 1em;
+    --font-size-card-body-secondary: .8em;
     --font-size-info: .8em;
 }
 
@@ -38,7 +39,7 @@ html, body {
     font-family: var(--font-family-primary);
     font-size: var(--font-size-primary);
 }
-.info-box {
+.info-box:not(#table_result_error):not(#table_result_message):not(#result_no_records) {
     font-size: var(--font-size-info);
 }
 .card-header,
@@ -51,4 +52,24 @@ html, body {
 .timeline > div > .timeline-item,
 .timeline > div > .timeline-item > .timeline-header {
     font-size: var(--font-size-card-body)
+}
+
+@media (min-width: 1201px) {
+
+}
+@media (min-width: 1025px) and (max-width: 1200px) {
+
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+
+}
+@media (min-width: 481px) and (max-width: 768px) {
+    #body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer > .row > .col-md-6 {
+        font-size: var(--font-size-card-body-secondary);
+    }
+}
+@media (max-width: 480px) {
+    #body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer > .row > .col-md-6 {
+        font-size: var(--font-size-card-body-secondary);
+    }
 }

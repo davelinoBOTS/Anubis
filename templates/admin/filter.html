@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<div class="form-group col-md-6">
+	<select class="custom-select rounded-0" id="{{ title }}" onchange="location.href=this.value">
+		<option selected="selected" disabled>{% blocktranslate with filter_title=title %} By {{ filter_title }} {% endblocktranslate %}</option>
+		{% for choice in choices %}
+			<option value="{{ choice.query_string|iriencode }}">{{ choice.display }}</option>
+		{% endfor %}
+	</select>
+</div>

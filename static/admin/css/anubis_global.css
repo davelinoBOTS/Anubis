@@ -19,6 +19,9 @@ html, body {
 }
 #body-admin-base.login #content-wrapper-admin-base .content-wrapper #content {
     padding: 7rem 0;
+    height: 100vh;
+    align-items: center;
+    display: flex;
 }
 #body-admin-base.login #content-wrapper-admin-base .content-wrapper #content .contents {
     width: 100%;
@@ -58,6 +61,19 @@ html, body {
     min-height: calc(100vh - (3.5rem + 90px));
     overflow: auto;
 }
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-header > .card-title > i {
+    margin-right:           10px;
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-body {
+    padding: 0;
+    height: calc(100vh - (1.9rem + 176px));
+    min-height: calc(100vh - (1.9rem + 176px));
+    overflow: auto;
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer {
+    min-height: 96px;
+    max-height: 96px;
+}
 #body-admin-base #content-wrapper-admin-base #card-main .card-body {
     padding: 10px;
 }
@@ -70,6 +86,10 @@ html, body {
 }
 #body-admin-base #content-wrapper-admin-base nav .nav-sidebar .nav-treeview > .nav-item > .nav-link > .nav-icon {
     margin-left: 15px;
+}
+#body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right {
+        border-right: 5px solid;
+        border-left: 0;
 }
 @media (min-width: 1201px) {
     .navbar-nav > .user-menu .user-image {
@@ -90,9 +110,21 @@ html, body {
     .navbar-nav > .user-menu .user-image {
         margin-top: -6px;
     }
+    #body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer > .row > .col-md-6 {
+        width: 50%;
+    }
+    #body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li.previous {
+        display: none;
+    }
 }
 @media (max-width: 480px) {
     .navbar-nav > .user-menu .user-image {
         margin-top: -6px;
+    }
+    #body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer > .row > .col-md-6 {
+        width: 50%;
+    }
+    #body-admin-base #content-wrapper-admin-base #table_result_list > .card-footer .anubis_callout_info_right ul.pagination li.previous {
+        display: none;
     }
 }

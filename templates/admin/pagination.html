@@ -1,0 +1,14 @@
+{% load admin_list bots_tags %}
+{% load i18n %}
+
+{% if pagination_required %}
+<div class="dataTables_paginate paging_simple_numbers float-right" id="result_list_paginate">
+	<ul class="pagination">
+		{% bots_paginator_previous cl %}
+		{% for num in page_range %}
+				{% bots_paginator_number cl num %}
+		{% endfor %}
+		{% bots_paginator_next cl %}
+	</ul>
+</div>
+{% endif %}

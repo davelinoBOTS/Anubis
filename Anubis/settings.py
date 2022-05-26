@@ -84,7 +84,7 @@ TEMPLATES = [
 
             'libraries': {
                 'bots_tags': 'templatetags.bots_tags',
-
+                'bots_list_tags': 'templatetags.bots_list_tags',
             }
         },
     },

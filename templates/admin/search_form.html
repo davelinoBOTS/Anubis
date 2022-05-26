@@ -1,0 +1,15 @@
+{% load i18n static %}
+
+{% if cl.search_fields %}
+	<form id="changelist-search" method="get">
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<span class="input-group-text">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</span>
+			</div>
+			<input type="text" class="form-control" placeholder="{% trans 'Search' %}" name="{{ search_var }}" value="{{ cl.query }}" id="searchbar" autofocus>
+			<input type="submit" value="{% trans 'Search' %}" class="btn btn-success">
+		</div>
+	</form>
+{% endif %}
