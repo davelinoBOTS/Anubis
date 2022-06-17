@@ -65,11 +65,18 @@ input[type="checkbox"] {
     min-height: calc(100vh - (3.5rem + 80px));
     overflow: auto;
 }
+#body-admin-base #content-wrapper-admin-base #card_delete_form > div > .card-body {
+    height: calc(100vh - (3.5rem + 115px));
+    min-height: calc(100vh - (3.5rem + 115px));
+    overflow: auto;
+}
 #body-admin-base #content-wrapper-admin-base #table_result_list > .card-header > .card-title > i,
-#body-admin-base #content-wrapper-admin-base #card_change_form > div > .card-header > .card-title > i {
+#body-admin-base #content-wrapper-admin-base #card_change_form > div > .card-header > .card-title > i,
+#body-admin-base #content-wrapper-admin-base #card_delete_form > div > .card-header > .card-title > i{
     margin-right:           10px;
 }
-#body-admin-base #content-wrapper-admin-base #card_change_form form .submit-row {
+#body-admin-base #content-wrapper-admin-base #card_change_form form .submit-row,
+#body-admin-base #content-wrapper-admin-base #card_delete_form form .submit-row {
     padding-left: 0;
     padding-right: 0;
 }
