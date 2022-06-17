@@ -3,6 +3,9 @@ from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from localflavor.br.models import BRPostalCodeField
+
+from Basic.enums import TypeAddress, TypePhone
 
 
 class EntityBasic(models.Model):
@@ -254,6 +257,118 @@ class Neighborhood(EntityBasic):
     def __str__(self):
         return '{0}-{1}-{2}-{3}'.format(self.name, self.city.name, self.city.state.acronym,
                                         self.city.state.country.acronym)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.updateDate = timezone.now()
+
+        return models.Model.save(self, force_insert=force_insert, force_update=force_update, using=using,
+                                 update_fields=update_fields)
+
+
+class Address(EntityBasic):
+    publicPlace = models.CharField(
+        verbose_name=_("Verbose Public Place"),
+        null=False,
+        max_length=255,
+        validators=[MinLengthValidator(5), MaxLengthValidator(255)]
+    )
+    number = models.CharField(
+        verbose_name=_("Verbose Number"),
+        null=True,
+        blank=True,
+        max_length=5,
+        validators=[MaxLengthValidator(5)]
+    )
+    complement = models.CharField(
+        verbose_name=_("Verbose Complement"),
+        null=True,
+        blank=True,
+        max_length=255,
+        validators=[MaxLengthValidator(255)]
+    )
+    referencePoint = models.TextField(
+        verbose_name=_("Verbose Reference Point"),
+        null=True,
+        blank=True
+    )
+    zipCode = BRPostalCodeField(
+        verbose_name=_("Verbose Zip Code"),
+        null=False
+    )
+    typeAddress = models.CharField(
+        verbose_name=_("Verbose Type Address"),
+        null=False,
+        max_length=100,
+        choices=[(tag.name, tag.value) for tag in TypeAddress]
+    )
+    neighborhood = models.ForeignKey(
+        Neighborhood,
+        on_delete=models.PROTECT,
+        verbose_name=_("Verbose Neighborhood"),
+        null=False
+    )
+
+    class Meta:
+        ordering = ["publicPlace", "zipCode", "typeAddress"]
+        verbose_name = _("Verbose Address")
+        verbose_name_plural = _("Verbose Address Plural")
+
+    def __str__(self):
+        NUMBER = 'S/N'
+
+        if self.number != '':
+            NUMBER = self.number
+
+        return '{0}, {1} - {2}'.format(self.publicPlace, NUMBER, self.neighborhood)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.updateDate = timezone.now()
+
+        return models.Model.save(self, force_insert=force_insert, force_update=force_update, using=using,
+                                 update_fields=update_fields)
+
+
+class Phone(EntityBasic):
+    ddd = models.CharField(
+        verbose_name=_("Verbose DDD"),
+        null=False,
+        max_length=2,
+        validators=[MinLengthValidator(2), MaxLengthValidator(2)]
+    )
+    number = models.CharField(
+        verbose_name=_("Verbose Number"),
+        null=False,
+        max_length=10,
+        validators=[MinLengthValidator(9), MaxLengthValidator(10)]
+    )
+    extension = models.CharField(
+        verbose_name=_("Verbose Extension"),
+        null=True,
+        blank=True,
+        max_length=5,
+        validators=[MaxLengthValidator(5)]
+    )
+    contact = models.CharField(
+        verbose_name=_("Verbose Contact"),
+        null=True,
+        blank=True,
+        max_length=100,
+        validators=[MaxLengthValidator(100)]
+    )
+    typePhone = models.CharField(
+        verbose_name=_("Verbose Type Phone"),
+        null=False,
+        max_length=100,
+        choices=[(tag.name, tag.value) for tag in TypePhone]
+    )
+
+    class Meta:
+        ordering = ["ddd"]
+        verbose_name = _("Verbose Phone")
+        verbose_name_plural = _("Verbose Phone Plural")
+
+    def __str__(self):
+        return '({0}) {1}'.format(self.ddd, self.number)
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.updateDate = timezone.now()

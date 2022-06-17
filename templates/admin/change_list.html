@@ -23,10 +23,13 @@
 						{{ cl.opts.verbose_name_plural }}
 					</h3>
 					<div class="card-tools">
-						<button type="button" class="btn btn-tool" data-card-widget="card-refresh" data-source="#" data-source-selector="#table_result_list_values" data-load-on-init="false">
+						<button class="btn btn-tool" data-card-widget="card-refresh" data-load-on-init="false"
+								data-source="#"
+								data-source-selector="#table_result_list_values" type="button">
 							<i class="fa-solid fa-sync-alt"></i>
 						</button>
-						<button type="button" class="btn btn-tool" data-card-widget="maximize">
+						<button alt="{% trans 'Maximize' %}" class="btn btn-tool" data-card-widget="maximize"
+								title="{% trans 'Maximize' %}" type="button">
 							<i class="fa-solid fa-expand"></i>
 						</button>
 					</div>

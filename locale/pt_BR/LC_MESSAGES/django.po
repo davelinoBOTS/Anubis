@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Anúbis 0.0.1-1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-24 18:27-0300\n"
+"POT-Creation-Date: 2022-06-16 23:34-0300\n"
 "PO-Revision-Date: 2022-05-22 15:02-0300\n"
 "Last-Translator: David Avelino <david.avelino@botsconsultoria.com.br>\n"
 "Language-Team: \n"
@@ -35,8 +35,8 @@ msgid "Superuser must have is_superuser=True."
 msgstr "O superusuário deve ter is_superuser=True."
 
 #: .\Basic\admin.py:24 .\Basic\admin.py:54 .\Basic\admin.py:84
-#: .\Basic\admin.py:114 .\Basic\admin.py:144 .\Person\admin.py:24
-#: .\Person\admin.py:55 .\Security\admin.py:26
+#: .\Basic\admin.py:114 .\Basic\admin.py:144 .\Person\admin.py:62
+#: .\Person\admin.py:93 .\Security\admin.py:26
 msgid "Fieldset General"
 msgstr "Geral"
 
@@ -44,96 +44,176 @@ msgstr "Geral"
 msgid "M000"
 msgstr "Módulo Básico"
 
-#: .\Basic\models.py:10
+#: .\Basic\enums.py:6 .\Basic\enums.py:21 .\templates\admin\base.html:219
+msgid "Home"
+msgstr ""
+
+#: .\Basic\enums.py:7 .\Basic\enums.py:22
+msgid "Work"
+msgstr ""
+
+#: .\Basic\enums.py:8 .\Basic\enums.py:23
+msgid "Family"
+msgstr ""
+
+#: .\Basic\enums.py:9 .\Basic\enums.py:26
+msgid "Outhers"
+msgstr ""
+
+#: .\Basic\enums.py:24
+msgid "Mobile"
+msgstr ""
+
+#: .\Basic\enums.py:25
+msgid "Fax"
+msgstr ""
+
+#: .\Basic\models.py:13
 msgid "Verbose ID"
 msgstr "ID"
 
-#: .\Basic\models.py:16
+#: .\Basic\models.py:19
 msgid "Verbose Registration Date"
 msgstr "Data de registro"
 
-#: .\Basic\models.py:21
+#: .\Basic\models.py:24
 msgid "Verbose Update Date"
 msgstr "Data de atualização"
 
-#: .\Basic\models.py:26 .\Person\models.py:122
+#: .\Basic\models.py:29 .\Person\models.py:162
 msgid "Verbose Is Active"
 msgstr "Ativo"
 
-#: .\Basic\models.py:37 .\Basic\models.py:85 .\Basic\models.py:168
+#: .\Basic\models.py:40 .\Basic\models.py:88 .\Basic\models.py:171
 msgid "Verbose Code IBGE"
 msgstr "Código IBGE"
 
-#: .\Basic\models.py:44 .\Basic\models.py:92 .\Basic\models.py:135
-#: .\Basic\models.py:175 .\Basic\models.py:226
+#: .\Basic\models.py:47 .\Basic\models.py:95 .\Basic\models.py:138
+#: .\Basic\models.py:178 .\Basic\models.py:229
 msgid "Verbose Name"
 msgstr "Nome"
 
-#: .\Basic\models.py:51 .\Basic\models.py:98
+#: .\Basic\models.py:54 .\Basic\models.py:101
 msgid "Verbose Acronym"
 msgstr "Sigla"
 
-#: .\Basic\models.py:58
+#: .\Basic\models.py:61
 msgid "Verbose Nationality"
 msgstr "Nacionalidade"
 
-#: .\Basic\models.py:67 .\Basic\models.py:106
+#: .\Basic\models.py:70 .\Basic\models.py:109
 msgid "Verbose Country"
 msgstr "País"
 
-#: .\Basic\models.py:68
+#: .\Basic\models.py:71
 msgid "Verbose Country Plural"
 msgstr "Países"
 
-#: .\Basic\models.py:112 .\Basic\models.py:143 .\Basic\models.py:188
+#: .\Basic\models.py:115 .\Basic\models.py:146 .\Basic\models.py:191
 msgid "Verbose State"
 msgstr "Estado"
 
-#: .\Basic\models.py:113
+#: .\Basic\models.py:116
 msgid "Verbose State Plural"
 msgstr "Estados"
 
-#: .\Basic\models.py:149 .\Basic\models.py:194
+#: .\Basic\models.py:152 .\Basic\models.py:197
 msgid "Verbose Territory"
 msgstr "Território"
 
-#: .\Basic\models.py:150
+#: .\Basic\models.py:153
 msgid "Verbose Territory Plural"
 msgstr "Territórios"
 
-#: .\Basic\models.py:181
+#: .\Basic\models.py:184
 msgid "Verbose Is Capital"
 msgstr "É Capital?"
 
-#: .\Basic\models.py:201 .\Basic\models.py:241
+#: .\Basic\models.py:204 .\Basic\models.py:244
 msgid "Verbose City"
 msgstr "Cidade"
 
-#: .\Basic\models.py:202
+#: .\Basic\models.py:205
 msgid "Verbose City Plural"
 msgstr "Cidades"
 
-#: .\Basic\models.py:214
+#: .\Basic\models.py:217
 msgid "This state already has a registered capital"
 msgstr "Esse estado já possui uma capital registrada"
 
-#: .\Basic\models.py:232
+#: .\Basic\models.py:235
 msgid "Verbose Zone"
 msgstr "Zona"
 
-#: .\Basic\models.py:247
+#: .\Basic\models.py:250 .\Basic\models.py:307
 msgid "Verbose Neighborhood"
 msgstr "Bairro"
 
-#: .\Basic\models.py:248
+#: .\Basic\models.py:251
 msgid "Verbose Neighborhood Plural"
 msgstr "Bairros"
 
-#: .\Person\admin.py:57
+#: .\Basic\models.py:270
+msgid "Verbose Public Place"
+msgstr "Logradouro"
+
+#: .\Basic\models.py:276 .\Basic\models.py:339
+msgid "Verbose Number"
+msgstr "Número"
+
+#: .\Basic\models.py:283
+msgid "Verbose Complement"
+msgstr "Complemento"
+
+#: .\Basic\models.py:290
+msgid "Verbose Reference Point"
+msgstr "Ponto de referência"
+
+#: .\Basic\models.py:295
+msgid "Verbose Zip Code"
+msgstr "CEP"
+
+#: .\Basic\models.py:299
+msgid "Verbose Type Address"
+msgstr "Tipo de endereço"
+
+#: .\Basic\models.py:313 .\Person\models.py:113
+msgid "Verbose Address"
+msgstr "Endereço"
+
+#: .\Basic\models.py:314 .\Person\models.py:114
+msgid "Verbose Address Plural"
+msgstr "Endereços"
+
+#: .\Basic\models.py:333
+msgid "Verbose DDD"
+msgstr "DDD"
+
+#: .\Basic\models.py:345
+msgid "Verbose Extension"
+msgstr "Ramal"
+
+#: .\Basic\models.py:352
+msgid "Verbose Contact"
+msgstr "Contato"
+
+#: .\Basic\models.py:359
+msgid "Verbose Type Phone"
+msgstr "Tipo de telefone"
+
+#: .\Basic\models.py:367 .\Person\models.py:93
+msgid "Verbose Phone"
+msgstr "Telefone"
+
+#: .\Basic\models.py:368 .\Person\models.py:94
+msgid "Verbose Phone Plural"
+msgstr "Telefones"
+
+#: .\Person\admin.py:95
 msgid "Fieldset Access"
 msgstr "Acessos"
 
-#: .\Person\admin.py:59
+#: .\Person\admin.py:97
 msgid "Fieldset Permissions"
 msgstr "Permissões"
 
@@ -149,7 +229,7 @@ msgstr "Masculino"
 msgid "FEMALE"
 msgstr "Feminino"
 
-#: .\Person\models.py:21 .\Person\models.py:99
+#: .\Person\models.py:21 .\Person\models.py:139
 msgid "Verbose Email"
 msgstr "E-mail"
 
@@ -177,7 +257,8 @@ msgstr "Data de aniversário"
 msgid "Verbose Sex"
 msgstr "Sexo"
 
-#: .\Person\models.py:70 .\Person\models.py:135
+#: .\Person\models.py:70 .\Person\models.py:87 .\Person\models.py:107
+#: .\Person\models.py:175
 msgid "Verbose Physical Person"
 msgstr "Pessoa física"
 
@@ -185,52 +266,52 @@ msgstr "Pessoa física"
 msgid "Verbose Physical Person Plural"
 msgstr "Pessoas física"
 
-#: .\Person\models.py:85
+#: .\Person\models.py:125
 msgid "Verbose Code"
 msgstr "Código"
 
-#: .\Person\models.py:92 .\templates\admin\login.html:47
+#: .\Person\models.py:132 .\templates\admin\login.html:47
 #: .\templates\admin\login.html:49 .\templates\admin\login.html:50
 msgid "Verbose Username"
 msgstr "Nome do usuário"
 
-#: .\Person\models.py:95
+#: .\Person\models.py:135
 msgid "Required. 15 characters or fewer. Letters, digits and @/./+/-/_ only."
 msgstr "Requerido. 15 caracteres ou menos. Apenas letras, dígitos e @/./+/-/_."
 
-#: .\Person\models.py:96
+#: .\Person\models.py:136
 msgid "Valid user."
 msgstr "Usuário válido."
 
-#: .\Person\models.py:96
+#: .\Person\models.py:136
 msgid "invalid"
 msgstr "inválido"
 
-#: .\Person\models.py:103
+#: .\Person\models.py:143
 msgid "Verbose First Name"
 msgstr "Primeiro none"
 
-#: .\Person\models.py:107
+#: .\Person\models.py:147
 msgid "Verbose Last Name"
 msgstr "Último none"
 
-#: .\Person\models.py:111
+#: .\Person\models.py:151
 msgid "Verbose Staff Status"
 msgstr "Status da equipe"
 
-#: .\Person\models.py:114
+#: .\Person\models.py:154
 msgid "Designates whether the user can log into this admin site."
 msgstr "Designa se o usuário pode fazer login neste site de administração."
 
-#: .\Person\models.py:117
+#: .\Person\models.py:157
 msgid "Verbose Superuser Status"
 msgstr "Status de superusuário"
 
-#: .\Person\models.py:119
+#: .\Person\models.py:159
 msgid "Designates that this user has all permissions."
 msgstr "Designa que este usuário tem todas as permissões."
 
-#: .\Person\models.py:125
+#: .\Person\models.py:165
 msgid ""
 "Designates whether this user should be treated as active. Uncheck this "
 "instead of deleting accounts."
@@ -238,15 +319,15 @@ msgstr ""
 "Designa se este usuário deve ser tratado como ativo. Desmarque isso em vez "
 "de excluir contas."
 
-#: .\Person\models.py:129
+#: .\Person\models.py:169
 msgid "Verbose Date Joined"
 msgstr "Data de acesso"
 
-#: .\Person\models.py:147
+#: .\Person\models.py:187
 msgid "Verbose System User"
 msgstr "Usuário do sistema"
 
-#: .\Person\models.py:148
+#: .\Person\models.py:188
 msgid "Verbose System User Plural"
 msgstr "Usuários do sistema"
 
@@ -278,37 +359,92 @@ msgstr "Minhas ações"
 msgid "None available"
 msgstr ""
 
-#: .\templates\admin\base.html:15 .\templates\admin\base.html:202
+#: .\templates\admin\base.html:15 .\templates\admin\base.html:209
 msgid "Django administration"
 msgstr ""
 
-#: .\templates\admin\base.html:153
+#: .\templates\admin\base.html:160
 msgid "Member since"
 msgstr ""
 
-#: .\templates\admin\base.html:161 .\templates\admin\base.html:219
+#: .\templates\admin\base.html:168 .\templates\admin\base.html:226
 msgid "View site"
 msgstr ""
 
-#: .\templates\admin\base.html:167
+#: .\templates\admin\base.html:174
 msgid "Change password"
 msgstr ""
 
-#: .\templates\admin\base.html:176
+#: .\templates\admin\base.html:183
 msgid "Log out"
-msgstr ""
-
-#: .\templates\admin\base.html:212
-msgid "Home"
 msgstr ""
 
 #: .\templates\admin\base_site.html:7
 msgid "Django site admin"
 msgstr ""
 
+#: .\templates\admin\change_form.html:29
+msgid "Add One"
+msgstr "Adicionar um(a)"
+
+#: .\templates\admin\change_form.html:32
+msgid "Update The"
+msgstr "Atualizar o(a)"
+
+#: .\templates\admin\change_form.html:37
+msgid "Return"
+msgstr "Voltar"
+
+#: .\templates\admin\change_form.html:42 .\templates\admin\change_form.html:43
+#: .\templates\admin\change_list.html:31 .\templates\admin\change_list.html:32
+msgid "Maximize"
+msgstr "Maximizar"
+
+#: .\templates\admin\change_form.html:77 .\templates\admin\change_list.html:71
+msgid "Please correct the error below."
+msgstr ""
+
+#: .\templates\admin\change_form.html:79 .\templates\admin\change_list.html:73
+msgid "Please correct the errors below."
+msgstr ""
+
+#: .\templates\admin\change_form_object_tools.html:8
+msgid "History"
+msgstr ""
+
 #: .\templates\admin\change_list_object_tools.html:9
 #, python-format
 msgid "Add %(name)s"
+msgstr ""
+
+#: .\templates\admin\change_list_results.html:58
+#: .\templates\admin\change_list_results.html:60
+msgid "View"
+msgstr ""
+
+#: .\templates\admin\change_list_results.html:58
+#: .\templates\admin\change_list_results.html:60
+#: .\venv\Lib\site-packages\django\forms\widgets.py:436
+msgid "Change"
+msgstr ""
+
+#: .\templates\admin\change_list_results.html:60
+#: .\templates\admin\submit_line.html:49 .\templates\admin\submit_line.html:51
+#: .\venv\Lib\site-packages\django\forms\formsets.py:483
+msgid "Delete"
+msgstr ""
+
+#: .\templates\admin\change_list_results.html:81
+msgid "Information"
+msgstr ""
+
+#: .\templates\admin\change_list_results.html:83
+msgid "No records found."
+msgstr ""
+
+#: .\templates\admin\filter.html:5
+#, python-format
+msgid " By %(filter_title)s "
 msgstr ""
 
 #: .\templates\admin\login.html:24 .\templates\admin\login.html:61
@@ -324,6 +460,35 @@ msgstr "Bem-vindo ao sistema Anúbis"
 #: .\templates\admin\login.html:57
 msgid "Verbose Password"
 msgstr "Senha"
+
+#: .\templates\admin\search_form.html:11 .\templates\admin\search_form.html:12
+msgid "Search"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:10 .\templates\admin\submit_line.html:12
+msgid "Save"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:18 .\templates\admin\submit_line.html:20
+msgid "Save as new"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:26 .\templates\admin\submit_line.html:28
+msgid "Save and add another"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:34 .\templates\admin\submit_line.html:37
+msgid "Save and continue editing"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:39
+msgid "Save and view"
+msgstr ""
+
+#: .\templates\admin\submit_line.html:57 .\templates\admin\submit_line.html:60
+#: .\templates\admin\submit_line.html:62
+msgid "Close"
+msgstr ""
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
 msgid "Messages"
@@ -884,10 +1049,6 @@ msgstr[1] ""
 msgid "Order"
 msgstr ""
 
-#: .\venv\Lib\site-packages\django\forms\formsets.py:483
-msgid "Delete"
-msgstr ""
-
 #: .\venv\Lib\site-packages\django\forms\models.py:887
 #, python-format
 msgid "Please correct the duplicate data for %(field)s."
@@ -935,10 +1096,6 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\widgets.py:435
 msgid "Currently"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:436
-msgid "Change"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\widgets.py:765

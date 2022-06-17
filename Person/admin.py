@@ -1,7 +1,43 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
-from Person.models import PhysicalPerson, SystemUser
+from Person.models import PhysicalPerson, SystemUser, PhysicalPersonPhone, PhysicalPersonAddress
+
+
+class PhysicalPersonPhoneInLine(admin.StackedInline):
+
+    fields = ["typePhone", "ddd", "number", "extension", "contact"]
+    model = PhysicalPersonPhone
+
+    extra = 1
+
+    def get_formset(self, request, obj=None, **kwargs):
+        if not obj:
+            self.readonly_fields = ["registrationDate", "updateDate"]
+        else:
+            self.readonly_fields = ["registrationDate", "updateDate"]
+
+        form = super(PhysicalPersonPhoneInLine, self).get_formset(request, obj, **kwargs)
+
+        return form
+
+
+class PhysicalPersonAddressInLine(admin.StackedInline):
+
+    fields = ["typeAddress", "publicPlace", "number", "complement", "neighborhood", "zipCode", "referencePoint"]
+    model = PhysicalPersonAddress
+
+    extra = 1
+
+    def get_formset(self, request, obj=None, **kwargs):
+        if not obj:
+            self.readonly_fields = ["registrationDate", "updateDate"]
+        else:
+            self.readonly_fields = ["registrationDate", "updateDate"]
+
+        form = super(PhysicalPersonAddressInLine, self).get_formset(request, obj, **kwargs)
+
+        return form
 
 
 class PhysicalPersonAdmin(admin.ModelAdmin):
@@ -9,6 +45,8 @@ class PhysicalPersonAdmin(admin.ModelAdmin):
 
     list_display = ["fullName", "sex", "cpf", "rg", "birthDate", "isActive"]
     list_filter = ["isActive"]
+
+    inlines = [PhysicalPersonPhoneInLine, PhysicalPersonAddressInLine]
 
     def get_queryset(self, request):
         queryset = PhysicalPerson.objects.all()

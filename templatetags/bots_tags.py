@@ -2,6 +2,10 @@ from django import template
 from django.contrib.admin.views.main import (
     PAGE_VAR
 )
+from django.contrib.admin.widgets import AdminTextareaWidget
+from django.forms import CharField, BooleanField, ModelChoiceField, ModelMultipleChoiceField, TypedChoiceField, \
+    DateField, ImageField
+from django.forms.widgets import Input, CheckboxInput, Select, DateInput, FileInput, Textarea
 from django.template.loader import get_template
 from django.utils.html import format_html
 
@@ -99,3 +103,118 @@ def bots_admin_list_filter(cl, spec):
             "spec": spec,
         }
     )
+
+
+@register.filter
+def bots_input_lookups(field):
+    if hasattr(field, 'field') and (isinstance(field.field, CharField)):
+        if isinstance(field.field.widget, AdminTextareaWidget):
+            if field.field.widget.attrs:
+                attrs = {
+                        'class': 'form-control '+field.field.widget.attrs['class'],
+                        'rows': '5',
+                        'language': 'pt_BR'
+                    }
+            else:
+                attrs = {
+                        'class': 'form-control ',
+                        'rows': '5',
+                        'language': 'pt_BR'
+                    }
+
+            field.field.widget = Textarea(attrs)
+        else:
+            if field.field.widget.attrs:
+                if field.field.max_length:
+                    attrs = {
+                        'class': 'form-control ' + field.field.widget.attrs['class'],
+                        'type': 'text',
+                        'maxlength': field.field.max_length
+                    }
+                else:
+                    attrs = {
+                        'class': 'form-control ' + field.field.widget.attrs['class'],
+                        'type': 'text'
+                    }
+            else:
+                if field.field.max_length:
+                    attrs = {
+                        'class': 'form-control ',
+                        'type': 'text',
+                        'maxlength': field.field.max_length
+                    }
+                else:
+                    attrs = {
+                        'class': 'form-control ',
+                        'type': 'text'
+                    }
+
+            field.field.widget = Input(attrs)
+    elif hasattr(field, 'field') and (isinstance(field.field, BooleanField)):
+
+        if field.field.widget.attrs:
+            attrs = {
+                'class': 'form-check-input align-self-end ' + field.field.widget.attrs['class'],
+                'type': 'checkbox',
+            }
+        else:
+            attrs = {
+                'class': 'form-check-input align-self-end',
+                'type': 'checkbox',
+            }
+
+        field.field.widget = CheckboxInput(attrs)
+    elif hasattr(field, 'field') and \
+            (isinstance(field.field, ModelChoiceField) or isinstance(field.field, ModelMultipleChoiceField)):
+        if hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
+
+            if field.field.widget.attrs:
+                attrs = {
+                    'class': 'form-control bots-select2 ' + field.field.widget.attrs['class']
+                }
+            else:
+                attrs = {
+                    'class': 'form-control bots-select2'
+                }
+
+            field.field.widget = Select(attrs, field.field.choices)
+    elif hasattr(field, 'field') and (isinstance(field.field, TypedChoiceField)):
+
+        if field.field.widget.attrs:
+            attrs = {
+                'class': 'form-control bots-select2' + field.field.widget.attrs['class']
+            }
+        else:
+            attrs = {
+                'class': 'form-control bots-select2'
+            }
+
+        field.field.widget = Select(attrs, field.field.choices)
+    elif hasattr(field, 'field') and (isinstance(field.field, DateField)):
+
+        if field.field.widget.attrs:
+            attrs = {
+                'class': 'form-control bots-date ' + field.field.widget.attrs['class']
+            }
+        else:
+            attrs = {
+                'class': 'form-control bots-date'
+            }
+
+        field.field.widget = DateInput(attrs)
+    elif hasattr(field, 'field') and (isinstance(field.field, ImageField)):
+
+        if field.field.widget.attrs and hasattr(field.field.widget.attrs, 'class'):
+            attrs = {
+                'class': 'form-control custom-file bots-image-file ' + field.field.widget.attrs['class'],
+                'type': 'file'
+            }
+        else:
+            attrs = {
+                'class': 'form-control custom-file bots-image-file',
+                'type': 'file'
+            }
+
+        field.field.widget = FileInput(attrs)
+
+    return field

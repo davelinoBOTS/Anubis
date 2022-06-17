@@ -1,0 +1,209 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+{% block extrahead %}
+	{{ block.super }}
+	<script src="{% url 'admin:jsi18n' %}"></script>
+	<!-- jQuery -->
+	<script crossorigin="anonymous"
+			integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+			referrerpolicy="no-referrer" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	{{ media }}
+{% endblock %}
+
+{% block extrastyle %}
+	{{ block.super }}
+	<link rel="stylesheet" href="{% static 'admin/css/forms.css' %}">
+	<link rel="stylesheet" href="{% static 'admin/css/widgets.css' %}">
+{% endblock %}
+
+{% block coltype %}colM{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ opts.app_label }} model-{{ opts.model_name }} change-form{% endblock %}
+
+{% block content %}
+<div id="content-main">
+	<div class="row">
+		<div id="card_change_form" class="col-md-12">
+			<div class="card card-dark" id="card_{{ opts.model_name }}"
+				 style="height: inherit; width: inherit; transition: all 0.15s ease 0s;">
+				<div class="card-header">
+					<h3 class="card-title">
+						{% if add %}
+                            <i class="fa-solid fa-square-plus"></i>
+							{% trans "Add One" %} {{ opts.verbose_name }}
+						{% else %}
+                            <i class="fa-solid fa-square-pen"></i>
+							{% trans "Update The" %} {{ opts.verbose_name }}: {{ original|truncatewords:"18" }}
+						{% endif %}
+					</h3>
+					<div class="card-tools">
+						<a href="/admin/{{ opts.app_label }}/{{ opts.model_name }}">
+							<button alt="{% trans 'Return' %}" class="btn btn-tool" title="{% trans 'Return' %}"
+									type="button">
+								<i class="fa-solid fa-angles-left"></i>
+							</button>
+						</a>
+						<button alt="{% trans 'Maximize' %}" class="btn btn-tool" data-card-widget="maximize"
+								title="{% trans 'Maximize' %}" type="button">
+							<i class="fa-solid fa-expand"></i>
+						</button>
+					</div>
+				</div>
+
+				<div class="card-body">
+					<div class="row" style="margin-bottom: 20px; margin-top: 0px;">
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-md-12">
+								</div>
+      						</div>
+						</div>
+						<div class="col-md-4 float-right">
+							{% block object-tools %}
+								{% if change %}
+									{% if not is_popup %}
+										{% block object-tools-items %}
+            								{% change_form_object_tools %}
+            							{% endblock %}
+            						{% endif %}
+            					{% endif %}
+          					{% endblock %}
+						</div>
+					</div>
+
+					{% if cl.formset and cl.formset.errors %}
+						<div style="width:100%;padding-left:20px;padding-right:20px">
+							<div id="info_error" class="info-box bg-gradient-danger">
+								<span class="info-box-icon"><i class="fa-solid fa-bomb"></i></span>
+								<div class="info-box-content">
+									<span class="info-box-text">
+										{% if errors|length == 1 %}
+											{% translate "Please correct the error below." %}
+										{% else %}
+											{% translate "Please correct the errors below." %}
+										{% endif %}
+									</span>
+									<span class="progress-description">
+										{{ adminform.form.non_field_errors }}
+									</span>
+								</div>
+							</div>
+						</div>
+					{% endif %}
+
+					<form class="form-horizontal"
+						  {% if has_file_field %}enctype="multipart/form-data"{% endif %}
+						  {% if form_url %}action="{{ form_url }}"{% endif %}
+						  method="post" id="{{ opts.model_name }}_form" novalidate>
+						{% csrf_token %}{% block form_top %}{% endblock %}
+						<div>
+							{% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1">{% endif %}
+							{% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}">{% endif %}
+
+							{% if save_on_top %}
+								{% block submit_buttons_top %}{% submit_row %}{% endblock %}
+							{% endif %}
+
+							{% block field_sets %}{% block inline_field_sets %}
+								<div class="card card-primary card-outline card-outline-tabs">
+									<div class="card-header p-0 border-bottom-0">
+										<ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
+											{% for fieldset in adminform %}
+												<li class="nav-item">
+													<a class="nav-link {% if forloop.first %}active{% endif %}"
+														id="custom-tabs-four-{% if fieldset.name %}{{ fieldset.name }}{% endif %}-tab"
+														data-bs-toggle="pill"
+														href="#custom-tabs-four-{% if fieldset.name %}{{ fieldset.name }}{% endif %}"
+														role="tab"
+														aria-controls="custom-tabs-four-{% if fieldset.name %}{{ fieldset.name }}{% endif %}"
+														aria-selected="true">
+
+														{% if fieldset.name %}{{ fieldset.name }}{% endif %}
+
+													</a>
+												</li>
+											{% endfor %}
+											{% for inline_admin_formset in inline_admin_formsets %}
+												<li class="nav-item">
+													<a class="nav-link"
+														id="custom-tabs-four-{{ inline_admin_formset.formset.prefix }}-tab"
+														data-bs-toggle="pill"
+														href="#custom-tabs-four-{{ inline_admin_formset.formset.prefix }}"
+														role="tab"
+														aria-controls="custom-tabs-four-{{ inline_admin_formset.formset.prefix }}"
+														aria-selected="true">
+														{% if inline_admin_formset.formset.max_num == 1 %}
+     														{{ inline_admin_formset.opts.verbose_name|capfirst }}
+   														{% else %}
+     														{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}
+   														{% endif %}
+													</a>
+												</li>
+											{% endfor %}
+										</ul>
+									</div>
+									<div class="card-body">
+										<div class="tab-content" id="custom-tabs-four-tabContent">
+											{% for fieldset in adminform %}
+												<div class="tab-pane fade {% if forloop.first %}active show{% endif %}"
+													id="custom-tabs-four-{% if fieldset.name %}{{ fieldset.name }}{% endif %}"
+													role="tabpanel"
+													aria-labelledby="custom-tabs-four-{% if fieldset.name %}{{ fieldset.name }}{% endif %}-tab">
+
+													{% include "admin/includes/fieldset.html" %}
+
+												</div>
+											{% endfor %}
+											{% for inline_admin_formset in inline_admin_formsets %}
+												<div class="tab-pane fade"
+													id="custom-tabs-four-{{ inline_admin_formset.formset.prefix }}"
+													role="tabpanel"
+													aria-labelledby="custom-tabs-four-{{ inline_admin_formset.formset.prefix }}-tab">
+
+													{% include inline_admin_formset.opts.template %}
+
+												</div>
+											{% endfor %}
+										</div>
+									</div>
+								</div>
+                            {% endblock %}{% endblock %}
+
+							{% block after_field_sets %}{% endblock %}
+
+							{% block after_related_objects %}{% endblock %}
+
+							{% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
+
+							{% block admin_change_form_document_ready %}
+    							<script id="django-admin-form-add-constants"
+            						src="{% static 'admin/js/change_form.js' %}"
+						            {% if adminform and add %}
+						                data-model-name="{{ opts.model_name }}"
+						            {% endif %}
+           						async>
+    							</script>
+							{% endblock %}
+
+							{# JavaScript for prepopulated fields #}
+							{% prepopulated_fields_js %}
+						</div>
+					</form>
+				</div>
+
+				<div class="card-footer">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="application/javascript">
+	$(document).ready(function() {
+		$(".bots-select2").select2();
+
+		$('.bots-date').mask("00/00/0000", {placeholder: "__/__/____"});
+	});
+</script>
+{% endblock %}

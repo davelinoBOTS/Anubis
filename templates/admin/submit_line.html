@@ -1,0 +1,69 @@
+{% load i18n admin_urls %}
+
+<div class="submit-row">
+	{% block submit-row %}
+	<div class="row">
+		<div class="col-md-8">
+		{% if show_save %}
+			<button class="btn btn-outline-success btn-block float-left" name="_save"
+					style="width: auto;margin-right: 5px;margin-top: 0;" type="submit"
+					title="{% translate 'Save' %}" alt="{% translate 'Save' %}">
+				<i class="fa-solid fa-floppy-disk"></i>
+				{% translate 'Save' %}
+			</button>
+		{% endif %}
+		{% if show_save_as_new %}
+			<button class="btn btn-outline-success btn-block float-left" name="_saveasnew"
+					style="width: auto;margin-right: 5px;margin-top: 0;" type="submit"
+					title="{% translate 'Save as new' %}" alt="{% translate 'Save as new' %}">
+				<i class="fa-solid fa-floppy-disk"></i>
+				{% translate 'Save as new' %}
+			</button>
+		{% endif %}
+		{% if show_save_and_add_another %}
+			<button class="btn btn-outline-primary btn-block float-left" name="_addanother"
+					style="width: auto;margin-right: 5px;margin-top: 0;" type="submit"
+					title="{% translate 'Save and add another' %}" alt="{% translate 'Save and add another' %}">
+				<i class="fa-solid fa-floppy-disk"></i>
+				{% translate 'Save and add another' %}
+			</button>
+		{% endif %}
+		{% if show_save_and_continue %}
+			<button class="btn btn-outline-primary btn-block float-left" name="_continue"
+					style="width: auto;margin-right: 5px;margin-top: 0;" type="submit"
+					title="{% translate 'Save and continue editing' %}" alt="{% translate 'Save and continue editing' %}">
+				<i class="fa-solid fa-floppy-disk"></i>
+				{% if can_change %}
+					{% translate 'Save and continue editing' %}
+				{% else %}
+					{% translate 'Save and view' %}
+				{% endif %}
+			</button>
+		{% endif %}
+		</div>
+		<div class="col-md-4">
+			{% if show_delete_link and original %}
+    			{% url opts|admin_urlname:'delete' original.pk|admin_urlquote as delete_url %}
+				<a href="{% add_preserved_filters delete_url %}" class="float-right">
+					<button type="button" class="btn btn-outline-danger btn-block" style="width: auto;margin-left: 5px;"
+					title="{% translate 'Delete' %}" alt="{% translate 'Delete' %}">
+						<i class="fa-solid fa-trash-can"></i>
+						{% translate "Delete" %}
+					</button>
+				</a>
+			{% endif %}
+			{% if show_close %}
+				<a href="{% url opts|admin_urlname:'changelist' %}" class="float-right">
+					<button alt="{% translate 'Close' %}"
+							class="btn btn-outline-secondary btn-block"
+							style="width: auto;margin-left: 5px;margin-top: 0;"
+							title="{% translate 'Close' %}" type="button">
+						<i class="fa-solid fa-square-xmark"></i>
+						{% translate 'Close' %}
+					</button>
+				</a>
+			{% endif %}
+		</div>
+	</div>
+	{% endblock %}
+</div>

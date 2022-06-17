@@ -12,7 +12,7 @@ from localflavor.br.models import BRCPFField
 from Anubis.codes_get import get_code_automatic
 from Anubis.utils import UserManager
 from Anubis.validators import validate_images_extension
-from Basic.models import EntityBasic
+from Basic.models import EntityBasic, Phone, Address
 from Person.enums import Sex
 
 
@@ -72,6 +72,46 @@ class PhysicalPerson(Person):
 
     def __str__(self):
         return "[{0}] {1}".format(self.cpf, self.fullName)
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.updateDate = timezone.now()
+
+        return models.Model.save(self, force_insert=force_insert, force_update=force_update, using=using,
+                                 update_fields=update_fields)
+
+
+class PhysicalPersonPhone(Phone):
+    physicalPerson = models.ForeignKey(
+        PhysicalPerson,
+        on_delete=models.CASCADE,
+        verbose_name=_("Verbose Physical Person"),
+        null=True,
+        blank=True
+    )
+
+    class Meta:
+        verbose_name = _("Verbose Phone")
+        verbose_name_plural = _("Verbose Phone Plural")
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        self.updateDate = timezone.now()
+
+        return models.Model.save(self, force_insert=force_insert, force_update=force_update, using=using,
+                                 update_fields=update_fields)
+
+
+class PhysicalPersonAddress(Address):
+    physicalPerson = models.ForeignKey(
+        PhysicalPerson,
+        on_delete=models.CASCADE,
+        verbose_name=_("Verbose Physical Person"),
+        null=True,
+        blank=True
+    )
+
+    class Meta:
+        verbose_name = _("Verbose Address")
+        verbose_name_plural = _("Verbose Address Plural")
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         self.updateDate = timezone.now()
